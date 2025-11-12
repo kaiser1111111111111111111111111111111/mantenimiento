@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Mantenimiento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Section -->
+    <div id="login-section" class="login-background">
+        <div class="login-container">
+            <div class="login-logo">
+                <img src="https://media.licdn.com/dms/image/v2/D4E0BAQG8sU48me8bkw/company-logo_200_200/company-logo_200_200/0/1687457379388?e=2147483647&v=beta&t=1Ttffodu8sOat2JcICLc5Dmcy-1IrLwckfXCDbci_mg" alt="Logo de la empresa">
+            </div>
+            <h2 class="login-title">Sistema de Gestión de Mantenimiento</h2>
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+            </div>
+            <button id="login-btn" class="btn btn-primary w-100 py-2">Iniciar Sesión</button>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="main-app" style="display: none;">
+        <div class="sidebar">
+            <div class="text-center mb-4">
+                <h4>Gestión de Mantenimiento</h4>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-section="gestion-mantenimiento">
+                        <i class="fas fa-tools"></i> Gestión de Mantenimiento
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-section="documentos">
+                        <i class="fas fa-folder"></i> Documentos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-section="formularios">
+                        <i class="fas fa-file-alt"></i> Formularios
+                    </a>
+                </li>
+                <li class="nav-item mt-4">
+                    <a class="nav-link" href="#" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h3 id="section-title">Dashboard</h3>
+                <div>
+                    <span id="user-name" class="me-3">Usuario</span>
+                    <i class="fas fa-user-circle fa-lg"></i>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="form-section active">
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stats-card">
+                            <i class="fas fa-tools"></i>
+                            <h4>15</h4>
+                            <p>Órdenes Activas</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stats-card">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>32</h4>
+                            <p>Completadas</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stats-card">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h4>5</h4>
+                            <p>Pendientes Urgentes</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stats-card">
+                            <i class="fas fa-clock"></i>
+                            <h4>8</h4>
+                            <p>En Proceso</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Actividades Recientes
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Revisión de termómetros
+                                        <span class="badge bg-success">Completado</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Chequeo preoperativo máquina #5
+                                        <span class="badge bg-warning">En proceso</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Inspección locativa área B
+                                        <span class="badge bg-danger">Pendiente</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Verificación L&D partes altas
+                                        <span class="badge bg-success">Completado</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Hoja de vida equipos de medición
+                                        <span class="badge bg-success">Completado</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Próximos Mantenimientos
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <h6>Máquina de Esterilización</h6>
+                                    <div class="progress mb-2">
+                                        <div class="progress-bar" role="progressbar" style="width: 75%">3 días restantes</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <h6>Equipos de Medición</h6>
+                                    <div class="progress mb-2">
+                                        <div class="progress-bar" role="progressbar" style="width: 40%">7 días restantes</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <h6>Verificación Termómetros</h6>
+                                    <div class="progress mb-2">
+                                        <div class="progress-bar" role="progressbar" style="width: 90%">1 día restante</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <h6>Inspección Locativa</h6>
+                                    <div class="progress mb-2">
+                                        <div class="progress-bar" role="progressbar" style="width: 60%">5 días restantes</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gestión de Mantenimiento Section -->
+            <div id="gestion-mantenimiento" class="form-section">
+                <ul class="nav nav-tabs mb-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#chequeo-preoperativo">Chequeo Preoperativo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#inspeccion-locativa">Inspección Locativa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#prestamo-herramientas">Préstamo Herramientas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#autorizacion">Autorización</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#esterilizacion">Esterilización</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="chequeo-preoperativo">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span>Chequeo Preoperativo</span>
+                                <button class="btn btn-primary">Nuevo Chequeo</button>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Equipo/Máquina</label>
+                                            <select class="form-select">
+                                                <option selected>Seleccione un equipo</option>
+                                                <option>Máquina de Esterilización #1</option>
+                                                <option>Máquina de Esterilización #2</option>
+                                                <option>Equipo de Medición A</option>
+                                                <option>Equipo de Medición B</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Fecha</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Observaciones</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="aprobado">
+                                        <label class="form-check-label" for="aprobado">Aprobado para operación</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="inspeccion-locativa">
+                        <div class="card">
+                            <div class="card-header">Inspección Locativa</div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Área</label>
+                                            <select class="form-select">
+                                                <option selected>Seleccione un área</option>
+                                                <option>Área A - Producción</option>
+                                                <option>Área B - Almacenamiento</option>
+                                                <option>Área C - Oficinas</option>
+                                                <option>Área D - Laboratorio</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Fecha</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Observaciones</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Guardar Inspección</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="prestamo-herramientas">
+                        <div class="card">
+                            <div class="card-header">Préstamo de Herramientas</div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Herramienta</label>
+                                            <select class="form-select">
+                                                <option selected>Seleccione una herramienta</option>
+                                                <option>Taladro eléctrico</option>
+                                                <option>Juego de llaves</option>
+                                                <option>Multímetro</option>
+                                                <option>Soldadora</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Responsable</label>
+                                            <input type="text" class="form-control" placeholder="Nombre del responsable">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Fecha de préstamo</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Fecha de devolución</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Registrar Préstamo</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="autorizacion">
+                        <div class="card">
+                            <div class="card-header">Autorización Salida/Ingreso</div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Tipo</label>
+                                            <select class="form-select">
+                                                <option selected>Seleccione tipo</option>
+                                                <option>Salida de equipo</option>
+                                                <option>Ingreso de equipo</option>
+                                                <option>Salida de material</option>
+                                                <option>Ingreso de material</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Fecha</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Descripción del elemento</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Persona autorizada</label>
+                                        <input type="text" class="form-control" placeholder="Nombre de la persona autorizada">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Generar Autorización</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="esterilizacion">
+                        <div class="card">
+                            <div class="card-header">Revisión Inicio de Proceso de Esterilización</div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Equipo de esterilización</label>
+                                            <select class="form-select">
+                                                <option selected>Seleccione equipo</option>
+                                                <option>Esterilizador #1</option>
+                                                <option>Esterilizador #2</option>
+                                                <option>Esterilizador #3</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Fecha y hora</label>
+                                            <input type="datetime-local" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Parámetros de esterilización</label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label class="form-label">Temperatura (°C)</label>
+                                                <input type="number" class="form-control">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Presión (psi)</label>
+                                                <input type="number" class="form-control">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Tiempo (min)</label>
+                                                <input type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Iniciar Proceso</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documentos Section -->
+            <div id="documentos" class="form-section">
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card dashboard-card">
+                            <i class="fas fa-paperclip"></i>
+                            <h3>Anexos</h3>
+                            <p>Documentos anexos</p>
+                            <button class="btn btn-primary mt-2">Acceder</button>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card dashboard-card">
+                            <i class="fas fa-file-contract"></i>
+                            <h3>Especificaciones Técnicas</h3>
+                            <p>Documentación técnica</p>
+                            <button class="btn btn-primary mt-2">Acceder</button>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card dashboard-card">
+                            <i class="fas fa-list-ol"></i>
+                            <h3>Instructivos</h3>
+                            <p>Guías y procedimientos</p>
+                            <button class="btn btn-primary mt-2">Acceder</button>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card dashboard-card">
+                            <i class="fas fa-book"></i>
+                            <h3>Manuales</h3>
+                            <p>Manuales de operación</p>
+                            <button class="btn btn-primary mt-2">Acceder</button>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card dashboard-card">
+                            <i class="fas fa-project-diagram"></i>
+                            <h3>Planes</h3>
+                            <p>Planes de mantenimiento</p>
+                            <button class="btn btn-primary mt-2">Acceder</button>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card dashboard-card">
+                            <i class="fas fa-tasks"></i>
+                            <h3>Procedimientos</h3>
+                            <p>Procedimientos operativos</p>
+                            <button class="btn btn-primary mt-2">Acceder</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formularios Section -->
+            <div id="formularios" class="form-section">
+                <div class="card">
+                    <div class="card-header">Formularios de Mantenimiento</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6 mb-3">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-primary text-start p-3">
+                                        <i class="fas fa-search me-2"></i> Inspección de Equipos
+                                    </button>
+                                    <button class="btn btn-outline-primary text-start p-3">
+                                        <i class="fas fa-clipboard-list me-2"></i> Orden de Mantenimiento V3
+                                    </button>
+                                    <button class="btn btn-outline-primary text-start p-3">
+                                        <i class="fas fa-pause-circle me-2"></i> Paradas Operativas de Máquina
+                                    </button>
+                                    <button class="btn btn-outline-primary text-start p-3">
+                                        <i class="fas fa-chart-line me-2"></i> Consumo Diario Servicios
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-3">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-primary text-start p-3">
+                                        <i class="fas fa-building me-2"></i> Mantenimiento Locativo
+                                    </button>
+                                    <button class="btn btn-outline-primary text-start p-3">
+                                        <i class="fas fa-cogs me-2"></i> Solicitud de Repuestos
+                                    </button>
+                                    <button class="btn btn-outline-primary text-start p-3">
+                                        <i class="fas fa-file-alt me-2"></i> RE-MTT-007 Maquinaria
+                                    </button>
+                                    <button class="btn btn-outline-primary text-start p-3">
+                                        <i class="fas fa-file-invoice me-2"></i> RE-MTT-006 Solicitud MITO
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
